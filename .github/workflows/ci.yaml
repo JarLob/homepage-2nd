@@ -22,7 +22,9 @@ jobs:
           node-version-file: '.tool-versions'
           cache: 'npm'
           cache-dependency-path: '${{ matrix.working_dir }}/package-lock.json'
-      - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
+      - run: |
+          echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
+          cat $NODE_EXTRA_CA_CERTS
       - name: Install dependencies
         run: npm i
       - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
