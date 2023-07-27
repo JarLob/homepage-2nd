@@ -22,8 +22,11 @@ jobs:
           node-version-file: '.tool-versions'
           cache: 'npm'
           cache-dependency-path: '${{ matrix.working_dir }}/package-lock.json'
+      - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
       - name: Install dependencies
         run: npm ci
+      - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
+        if: always()
       - run: npm run lint
 
   build:
@@ -39,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
-        if: failed()
+        if: always()
       - name: Build
         run: npm run build
 
