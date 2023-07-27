@@ -24,7 +24,7 @@ jobs:
           cache-dependency-path: '${{ matrix.working_dir }}/package-lock.json'
       - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
       - name: Install dependencies
-        run: npm ci
+        run: npm i
       - run: echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
         if: always()
       - run: npm run lint
