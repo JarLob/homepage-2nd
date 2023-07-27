@@ -43,7 +43,7 @@ jobs:
       - run: |
           echo "NODE_EXTRA_CA_CERTS is $NODE_EXTRA_CA_CERTS"
           cat $NODE_EXTRA_CA_CERTS
-          RUN mkdir -p $HOME/.pki/nssdb && certutil --empty-password -d $HOME/.pki/nssdb -N \
+          mkdir -p $HOME/.pki/nssdb && certutil --empty-password -d $HOME/.pki/nssdb -N \
             && certutil -d sql:$HOME/.pki/nssdb -A -t "C,," -n cacerts.crt -i $NODE_EXTRA_CA_CERTS
       - name: Install dependencies
         run: npm ci
